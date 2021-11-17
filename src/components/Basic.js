@@ -7,8 +7,7 @@ import FormLabel from "@mui/material/FormLabel";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 
-const Basic = ({ answers, setAnswers }) => {
-  // const Basic = () => {
+const Basic = ({ basicProfile, setBasicProfile }) => {
   return (
     <>
       <div style={{ textAlign: "center" }}>

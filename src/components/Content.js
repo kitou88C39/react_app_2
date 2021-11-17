@@ -16,7 +16,7 @@ function getSteps() {
 const StepContent = ({ stepIndex, basicProps, questionnaireProps, optionalProps }) => {
   switch (stepIndex) {
     case 0:
-      return  <Basic {...basicProps}/>;
+      return  <Basic {...basicProps={ basicProfile, setBasicProfile }} />
     case 1:
       return <Questionnaire {...questionnaireProps} />;
     case 2:
@@ -24,7 +24,7 @@ const StepContent = ({ stepIndex, basicProps, questionnaireProps, optionalProps 
     case 3:
       return (
         <div style={{ textAlign: "center" }}>
-          <Basic {...basicProps}/>
+          <Basic {...basicProps={ basicProfile, setBasicProfile }} />
           <Questionnaire {...questionnaireProps} />
           <Optional {...optionalProps} />
         </div>
@@ -35,6 +35,7 @@ const StepContent = ({ stepIndex, basicProps, questionnaireProps, optionalProps 
 };
 function Content() {
   const [activeStep, setActiveStep] = React.useState(0);
+  const [basicProfile, setBasicProfile] = React.useState({ gender: null, year: null, month: null, day: null });
   const [answers, setAnswers] = React.useState(Array(QUESTIONS.length).fill(null));
   const steps = getSteps();
   const handleNext = () => {
