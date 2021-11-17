@@ -12,7 +12,7 @@ const Basic = ({ basicProfile, setBasicProfile }) => {
     <>
       <div style={{ textAlign: "center" }}>
         <FormControl component="fieldset">
-          <FormLabel component="legend">- 性別 -</FormLabel>
+          <FormLabel component="gender">- 性別 -</FormLabel>
           <RadioGroup row aria-label="gender" name="row-radio-buttons-group">
             <FormControlLabel value="male" control={<Radio />} label="男性" />
             <FormControlLabel value="female" control={<Radio />} label="女性" />

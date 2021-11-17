@@ -3,7 +3,7 @@ import { Grid } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
 import TextField from "@mui/material/TextField";
 
-const Optional = () => {
+const Optional = ({ request, setRequest }) => {
   return (
     <div>
       <Grid container>
