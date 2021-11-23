@@ -3,13 +3,17 @@ import { Grid } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
 import TextField from "@mui/material/TextField";
 
-const Optional = ({ request, setRequest }) => {
+const Optional = ({ optionalRequest, setOptionalRequest }) => {
   return (
     <div>
       <Grid container>
         <Grid sm={2} />
         <Grid lg={8} sm={8} spacing={10}>
-          <Tooltip title="ご相談内容を記入することができます" placement="top-start" arrow>
+          <Tooltip title="ご相談内容を記入することができます" placement="top-start" arrow value={optionalRequest.consultation} onChange={(evt) =>
+              setOptionalRequest((state) => {
+              return { ...state, consultation: evt.target.value }
+              })
+              }>
             <TextField
               label="ご相談内容"
               fullWidth
