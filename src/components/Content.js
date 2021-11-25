@@ -34,9 +34,9 @@ const StepContent = ({
     case 3:
       return (
         <div style={{ textAlign: "center" }}>
-          <Basic {...basicProps} />
+          <Basic isConfirm {...basicProps} />
           <Questionnaire {...questionnaireProps} />
-          <Optional {...optionalProps} />
+          <Optional Confirm {...optionalProps} />
         </div>
       );
     default:
