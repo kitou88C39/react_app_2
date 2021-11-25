@@ -10,7 +10,7 @@ const Optional = ({ optionalRequest, setOptionalRequest, isConfirm }) => {
         <Grid sm={2} />
         <Grid lg={8} sm={8} spacing={10}>
           {isConfirm ? (
-            <span>{optionalRequest.consultation === "ご相談内容"}</span>
+            <span>{optionalRequest?.consultation}</span>
           ) : (
             <Tooltip
               title="ご相談内容を記入することができます"

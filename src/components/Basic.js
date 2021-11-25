@@ -42,7 +42,7 @@ const Basic = ({ basicProfile, setBasicProfile, isConfirm }) => {
         <FormControl sx={{ m: 1, minWidth: 120 }}>
           <InputLabel htmlFor="grouped-native-select">year</InputLabel>
           {isConfirm ? (
-            <span>{basicProfile?.year === ""}</span>
+            <span>{basicProfile?.year}</span>
           ) : (
             <Select
               native
@@ -70,7 +70,7 @@ const Basic = ({ basicProfile, setBasicProfile, isConfirm }) => {
         <FormControl sx={{ m: 1, minWidth: 120 }}>
           <InputLabel htmlFor="grouped-native-select">month</InputLabel>
           {isConfirm ? (
-            <span>{basicProfile?.month === ""}</span>
+            <span>{basicProfile?.month}</span>
           ) : (
             <Select
               native
@@ -98,7 +98,7 @@ const Basic = ({ basicProfile, setBasicProfile, isConfirm }) => {
         <FormControl sx={{ m: 1, minWidth: 120 }}>
           <InputLabel htmlFor="grouped-native-select">day</InputLabel>
           {isConfirm ? (
-            <span>{basicProfile?.day === ""}</span>
+            <span>{basicProfile?.day}</span>
           ) : (
             <Select
               native

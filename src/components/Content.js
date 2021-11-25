@@ -36,7 +36,7 @@ const StepContent = ({
         <div style={{ textAlign: "center" }}>
           <Basic isConfirm {...basicProps} />
           <Questionnaire {...questionnaireProps} />
-          <Optional Confirm {...optionalProps} />
+          <Optional isConfirm {...optionalProps} />
         </div>
       );
     default:
