@@ -12,7 +12,7 @@ export const QUESTIONS = [
   "過去、5年以内に病気やケガで手術を受けたことまたは継続して７日以上の入院をしたことはありますか？",
 ];
 
-const Questionnaire = ({ answers, setAnswers }) => {
+const Questionnaire = ({ answers, setAnswers, isConfirm }) => {
   const handleAnswer = (answeredIndex, answer) => {
     setAnswers(answers.map((e, i) => (i === answeredIndex ? answer : e)));
   };
@@ -24,7 +24,7 @@ const Questionnaire = ({ answers, setAnswers }) => {
           .map((answer, i) => (
             <React.Fragment key={i}>
               <FormLabel component="legend">{QUESTIONS[i]}</FormLabel>
-              {answer ? (
+              {isConfirm ? (
                 <Typography>{answer === "yes" ? "はい" : "いいえ"}</Typography>
               ) : (
                 <RadioGroup

@@ -59,7 +59,7 @@ const Basic = ({ basicProfile, setBasicProfile, isConfirm }) => {
               <option aria-label="None" value="" />
               <optgroup label="year">
                 {Array.from(Array(2020), (_, num) => (
-                  <option key={num} value={num + 1}>
+                  <option key={num} value={num + 1990}>
                     {num + 1990}
                   </option>
                 ))}
