@@ -21,8 +21,8 @@ const Basic = ({ basicProfile, setBasicProfile, isConfirm }) => {
         exit={{ scaleY: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <div style={{ ...styles.page, ...styles.Basic }}>
-          <p style={styles.copy}>お客様の情報を入力して下さい</p>
+        <div>
+          <p>お客様の情報を入力して下さい</p>
           <div style={{ textAlign: "center" }}>
             <FormControl component="fieldset">
               <FormLabel component="gender">- 性別 -</FormLabel>
@@ -141,9 +141,7 @@ const Basic = ({ basicProfile, setBasicProfile, isConfirm }) => {
               )}
             </FormControl>
           </div>
-          <Link style={{ ...styles.copy, ...styles.link }} to="/Questionnaire">
-            次へ
-          </Link>
+          <Link to="/Questionnaire">次へ</Link>
         </div>
       </motion.div>
     </>

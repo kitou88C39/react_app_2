@@ -28,8 +28,8 @@ const Questionnaire = ({ answers, setAnswers, isConfirm }) => {
       exit={{ scaleY: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div style={{ ...styles.page, ...styles.Questionnaire }}>
-        <p style={styles.copy}>以下の質問にお答え下さい</p>
+      <div>
+        <p>以下の質問にお答え下さい</p>
         <FormControl component="fieldset">
           {answers
             .filter((_, i) => i === 0 || answers[i - 1])
@@ -65,12 +65,8 @@ const Questionnaire = ({ answers, setAnswers, isConfirm }) => {
             ))}
         </FormControl>
       </div>
-      <Link style={{ ...styles.copy, ...styles.link }} to="/Basic">
-        次へ
-      </Link>
-      <Link style={{ ...styles.copy, ...styles.link }} to="/Optional">
-        戻る
-      </Link>
+      <Link to="/Basic">次へ</Link>
+      <Link to="/Optional">戻る</Link>
     </motion.div>
   );
 };

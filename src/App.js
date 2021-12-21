@@ -9,22 +9,24 @@ import Confirm from "./components/Confirm";
 const App = () => {
   const location = useLocation();
   return (
-    <AnimatePresence exitBeforeEnter initial={false}>
-      <Routes location={location} key={location.pathname}>
-        <Route path="/Basic">
-          <Basic />
-        </Route>
-        <Route path="/Questionnaire">
-          <Questionnare />
-        </Route>
-        <Route path="/Optional">
-          <Optional />
-        </Route>
-        <Route path="/Confirm">
-          <Confirm />
-        </Route>
-      </Routes>
-    </AnimatePresence>
+    <>
+      <AnimatePresence exitBeforeEnter initial={false}>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/Basic">
+            <Basic />
+          </Route>
+          <Route path="/Questionnaire">
+            <Questionnare />
+          </Route>
+          <Route path="/Optional">
+            <Optional />
+          </Route>
+          <Route path="/Confirm">
+            <Confirm />
+          </Route>
+        </Routes>
+      </AnimatePresence>
+    </>
   );
 };
 export default App;

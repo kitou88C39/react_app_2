@@ -11,8 +11,8 @@ const Optional = ({ optionalRequest, setOptionalRequest, isConfirm }) => {
       exit={{ scaleY: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div style={{ ...styles.page, ...styles.Optional }}>
-        <p style={styles.copy}>ご相談下さい</p>
+      <div>
+        <p>ご相談下さい</p>
         <div>
           <Grid container>
             <Grid sm={2} />
@@ -45,12 +45,8 @@ const Optional = ({ optionalRequest, setOptionalRequest, isConfirm }) => {
             </Grid>
           </Grid>
         </div>
-        <Link style={{ ...styles.copy, ...styles.link }} to="/Confirm">
-          次へ
-        </Link>
-        <Link style={{ ...styles.copy, ...styles.link }} to="/Questionnaire">
-          戻る
-        </Link>
+        <Link to="/Confirm">次へ</Link>
+        <Link to="/Questionnaire">戻る</Link>
       </div>
     </motion.div>
   );
