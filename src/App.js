@@ -1,15 +1,30 @@
-import { Grid } from "@mui/material";
-import Header from "./components/Header";
-import Content from "./components/Content";
+import React from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+import Basic from "./components/Basic";
+import Questionnare from "./components/Questionnaire";
+import Optional from "./components/Optional";
+import Confirm from "./components/Confirm";
 
-function App() {
+const App = () => {
+  const location = useLocation();
   return (
-    <Grid container direction="column">
-      <Header />
-      <div style={{ padding: 30 }}>
-        <Content />
-      </div>
-    </Grid>
+    <AnimatePresence exitBeforeEnter initial={false}>
+      <Routes location={location} key={location.pathname}>
+        <Route path="/Basic">
+          <Basic />
+        </Route>
+        <Route path="/Questionnaire">
+          <Questionnare />
+        </Route>
+        <Route path="/Optional">
+          <Optional />
+        </Route>
+        <Route path="/Confirm">
+          <Confirm />
+        </Route>
+      </Routes>
+    </AnimatePresence>
   );
-}
+};
 export default App;

@@ -1,12 +1,12 @@
-import React from "react";
-import { AppBar, Toolbar } from "@mui/material";
+// import React from "react";
+// import { AppBar, Toolbar } from "@mui/material";
 
-const Header = () => {
-  return (
-    <AppBar position="static" style={{ backgroundColor: "primary" }}>
-      <Toolbar>React課題 ②</Toolbar>
-    </AppBar>
-  );
-};
+// const Header = () => {
+//   return (
+//     <AppBar position="static" style={{ backgroundColor: "primary" }}>
+//       <Toolbar>React課題 ②</Toolbar>
+//     </AppBar>
+//   );
+// };
 
-export default Header;
+// export default Header;
