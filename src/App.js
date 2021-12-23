@@ -12,18 +12,10 @@ const App = () => {
     <>
       <AnimatePresence exitBeforeEnter initial={false}>
         <Routes location={location} key={location.pathname}>
-          <Route path="/Basic">
-            <Basic />
-          </Route>
-          <Route path="/Questionnaire">
-            <Questionnare />
-          </Route>
-          <Route path="/Optional">
-            <Optional />
-          </Route>
-          <Route path="/Confirm">
-            <Confirm />
-          </Route>
+          <Route path="/Basic" element={<Basic />}></Route>
+          <Route path="/Questionnaire" element={<Questionnare />}></Route>
+          <Route path="/Optional" element={<Optional />}></Route>
+          <Route path="/Confirm" element={<Confirm />}></Route>
         </Routes>
       </AnimatePresence>
     </>
