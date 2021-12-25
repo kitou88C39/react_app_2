@@ -1,28 +1,14 @@
 import React from "react";
-import Basic from "./Basic";
-import Questionnaire, { QUESTIONS } from "./Questionnaire";
-import Optional from "./Optional";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import Basic from "./Basic";
+import Questionnaire from "./Questionnaire";
+import Optional from "./Optional";
+import { Button } from "@mui/material";
 
 export const UserInputData = React.createContext();
 
-function Confirm() {
-  // eslint-disable-next-line
-  const [basicProfile, setBasicProfile] = React.useState({
-    gender: null,
-    year: null,
-    month: null,
-    day: null,
-  });
-  // eslint-disable-next-line
-  const [answers, setAnswers] = React.useState(
-    Array(QUESTIONS.length).fill(null)
-  );
-  // eslint-disable-next-line
-  const [optionalRequest, setOptionalRequest] = React.useState({
-    request: null,
-  });
+function Confirm({ basicProps, questionnaireProps, optionalProps }) {
   return (
     <motion.div
       initial={{ scaleY: 0 }}
@@ -31,14 +17,24 @@ function Confirm() {
       transition={{ duration: 0.5 }}
     >
       <div>
-        <p>以下の内容をご確認下さい</p>
+        <p style={{ textAlign: "center" }}>以下の内容をご確認下さい</p>
         <div style={{ textAlign: "center" }}>
-          <Basic isConfirm />
-          <Questionnaire isConfirm />
-          <Optional isConfirm />{" "}
+          <Basic isConfirm {...basicProps} />
+          <Questionnaire isConfirm {...questionnaireProps} />
+          <Optional isConfirm {...optionalProps} />{" "}
         </div>
-        <Link to="/Basic">送信</Link>
-        <Link to="/Optional">戻る</Link>
+        <div style={{ textAlign: "center" }}>
+          <Link to="/Optional">
+            <Button variant="outlined" size="medium">
+              戻る
+            </Button>
+          </Link>
+          <Link to="/">
+            <Button variant="contained" size="medium">
+              送信
+            </Button>
+          </Link>
+        </div>
       </div>
     </motion.div>
   );

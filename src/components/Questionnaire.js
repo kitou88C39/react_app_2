@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 import {
+  Button,
   FormControl,
   FormControlLabel,
   FormLabel,
@@ -17,10 +18,13 @@ export const QUESTIONS = [
   "過去、5年以内に病気やケガで手術を受けたことまたは継続して７日以上の入院をしたことはありますか？",
 ];
 
-const Questionnaire = ({ answers, setAnswers, isConfirm }) => {
+const Questionnaire = ({ isConfirm }) => {
   const handleAnswer = (answeredIndex, answer) => {
     setAnswers(answers.map((e, i) => (i === answeredIndex ? answer : e)));
   };
+  const [answers, setAnswers] = React.useState(
+    Array(QUESTIONS.length).fill(null)
+  );
   return (
     <motion.div
       initial={{ scaleY: 0 }}
@@ -28,8 +32,8 @@ const Questionnaire = ({ answers, setAnswers, isConfirm }) => {
       exit={{ scaleY: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div>
-        <p>以下の質問にお答え下さい</p>
+      <div style={{ textAlign: "center" }}>
+        <p style={{ textAlign: "center" }}>以下の質問にお答え下さい</p>
         <FormControl component="fieldset">
           {answers
             .filter((_, i) => i === 0 || answers[i - 1])
@@ -65,8 +69,18 @@ const Questionnaire = ({ answers, setAnswers, isConfirm }) => {
             ))}
         </FormControl>
       </div>
-      <Link to="/Basic">次へ</Link>
-      <Link to="/Optional">戻る</Link>
+      <div style={{ textAlign: "center" }}>
+        <Link to="/">
+          <Button variant="outlined" size="medium">
+            戻る
+          </Button>
+        </Link>
+        <Link to="/Optional">
+          <Button variant="contained" size="medium">
+            次へ
+          </Button>
+        </Link>
+      </div>
     </motion.div>
   );
 };

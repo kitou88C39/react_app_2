@@ -1,9 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Grid, TextField, Tooltip } from "@mui/material";
 import { Link } from "react-router-dom";
+import { Button, Grid, TextField, Tooltip } from "@mui/material";
 
-const Optional = ({ optionalRequest, setOptionalRequest, isConfirm }) => {
+const Optional = ({ isConfirm }) => {
+  const [optionalRequest, setOptionalRequest] = React.useState({
+    request: null,
+  });
   return (
     <motion.div
       initial={{ scaleY: 0 }}
@@ -11,7 +14,7 @@ const Optional = ({ optionalRequest, setOptionalRequest, isConfirm }) => {
       exit={{ scaleY: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div>
+      <div style={{ textAlign: "center" }}>
         <p>ご相談下さい</p>
         <div>
           <Grid container>
@@ -45,8 +48,18 @@ const Optional = ({ optionalRequest, setOptionalRequest, isConfirm }) => {
             </Grid>
           </Grid>
         </div>
-        <Link to="/Confirm">次へ</Link>
-        <Link to="/Questionnaire">戻る</Link>
+        <div style={{ textAlign: "center" }}>
+          <Link to="/Questionnaire">
+            <Button variant="outlined" size="medium">
+              戻る
+            </Button>
+          </Link>
+          <Link to="/Optional">
+            <Button variant="contained" size="medium">
+              次へ
+            </Button>
+          </Link>
+        </div>
       </div>
     </motion.div>
   );

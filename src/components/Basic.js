@@ -1,7 +1,8 @@
 import React from "react";
-
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
+  Button,
   FormControl,
   FormControlLabel,
   FormLabel,
@@ -10,9 +11,14 @@ import {
   RadioGroup,
   Select,
 } from "@mui/material";
-import { motion } from "framer-motion";
 
-const Basic = ({ basicProfile, setBasicProfile, isConfirm }) => {
+const Basic = ({ isConfirm }) => {
+  const [basicProfile, setBasicProfile] = React.useState({
+    gender: null,
+    year: null,
+    month: null,
+    day: null,
+  });
   return (
     <>
       <motion.div
@@ -22,7 +28,7 @@ const Basic = ({ basicProfile, setBasicProfile, isConfirm }) => {
         transition={{ duration: 0.5 }}
       >
         <div>
-          <p>お客様の情報を入力して下さい</p>
+          <p style={{ textAlign: "center" }}>お客様の情報を入力して下さい</p>
           <div style={{ textAlign: "center" }}>
             <FormControl component="fieldset">
               <FormLabel component="gender">- 性別 -</FormLabel>
@@ -141,11 +147,16 @@ const Basic = ({ basicProfile, setBasicProfile, isConfirm }) => {
               )}
             </FormControl>
           </div>
-          <Link to="/Questionnaire">次へ</Link>
+          <div style={{ textAlign: "center" }}>
+            <Link to="/Questionnaire">
+              <Button variant="contained" size="medium">
+                次へ
+              </Button>
+            </Link>
+          </div>
         </div>
       </motion.div>
     </>
   );
 };
-
 export default Basic;
