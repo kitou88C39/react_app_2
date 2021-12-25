@@ -54,7 +54,7 @@ const Optional = ({ isConfirm }) => {
               戻る
             </Button>
           </Link>
-          <Link to="/Optional">
+          <Link to="/Confirm">
             <Button variant="contained" size="medium">
               次へ
             </Button>
