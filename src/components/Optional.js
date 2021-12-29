@@ -2,16 +2,39 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { Button, Grid, TextField, Tooltip } from "@mui/material";
+import { createBasicParameter } from "./Basic";
+import { createParamArray } from "./paramUtil";
 
-const Optional = ({ isConfirm }) => {
+const Optional = ({ isConfirm, data }) => {
   const [optionalRequest, setOptionalRequest] = React.useState({
     request: null,
+    consultation: data ?? "",
   });
   const { search } = useLocation();
   const query = React.useMemo(() => new URLSearchParams(search), [search]);
-  // 先ほど指定したパラメータ名(ここでは"hoge")を指定
+  const gender = query.get("gender");
+  const year = query.get("year");
+  const month = query.get("month");
+  const day = query.get("day");
+  const answers = query.get("answers");
 
-  const hoge = query.get("hoge");
+  const basicProfile = React.useMemo(() => {
+    return createBasicParameter({
+      gender,
+      year,
+      month,
+      day,
+    });
+  }, [gender, year, month, day]);
+
+  const paramArray = React.useMemo(() => {
+    return createParamArray({
+      ...basicProfile,
+      answers,
+      consultation: optionalRequest?.consultation ?? undefined,
+    });
+  }, [basicProfile, answers, optionalRequest]);
+
   return (
     <>
       {!isConfirm ? <p style={{ textAlign: "center" }}>ご相談下さい</p> : null}
@@ -62,7 +85,11 @@ const Optional = ({ isConfirm }) => {
                   戻る
                 </Button>
               </Link>
-              <Link to="/Confirm">
+              <Link
+                to={{
+                  pathname: `/Confirm?${paramArray.join("&")}`,
+                }}
+              >
                 <Button variant="contained" size="medium">
                   次へ
                 </Button>

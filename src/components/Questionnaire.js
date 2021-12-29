@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
-// import Optional from "./Optional";
 import {
   Button,
   FormControl,
@@ -11,6 +10,8 @@ import {
   RadioGroup,
   Typography,
 } from "@mui/material";
+import { createBasicParameter } from "./Basic";
+import { createParamArray } from "./paramUtil";
 
 export const QUESTIONS = [
   "現在、生命保険に加入されていますか？",
@@ -18,18 +19,38 @@ export const QUESTIONS = [
   "過去、5年以内に病気やケガで手術を受けたことまたは継続して７日以上の入院をしたことはありますか？",
 ];
 
-const Questionnaire = ({ isConfirm }) => {
+const Questionnaire = ({ isConfirm, data }) => {
   const handleAnswer = (answeredIndex, answer) => {
     setAnswers(answers.map((e, i) => (i === answeredIndex ? answer : e)));
   };
   const { search } = useLocation();
   const query = React.useMemo(() => new URLSearchParams(search), [search]);
-  // 先ほど指定したパラメータ名(ここでは"hoge")を指定
 
-  const hoge = query.get("hoge");
+  const gender = query.get("gender");
+  const year = query.get("year");
+  const month = query.get("month");
+  const day = query.get("day");
+
+  const basicProfile = React.useMemo(() => {
+    return createBasicParameter({
+      gender,
+      year,
+      month,
+      day,
+    });
+  }, [gender, year, month, day]);
+
   const [answers, setAnswers] = React.useState(
-    Array(QUESTIONS.length).fill(null)
+    data ? data.split(",") : Array(QUESTIONS.length).fill(null)
   );
+
+  const paramArray = React.useMemo(() => {
+    return createParamArray({
+      ...basicProfile,
+      answers: answers.join(","),
+    });
+  }, [basicProfile, answers]);
+
   return (
     <>
       {!isConfirm ? (
@@ -85,7 +106,11 @@ const Questionnaire = ({ isConfirm }) => {
                 戻る
               </Button>
             </Link>
-            <Link to="/Optional">
+            <Link
+              to={{
+                pathname: `/Optional?${paramArray.join("&")}`,
+              }}
+            >
               <Button variant="contained" size="medium">
                 次へ
               </Button>

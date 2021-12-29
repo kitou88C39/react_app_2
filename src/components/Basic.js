@@ -11,20 +11,32 @@ import {
   RadioGroup,
   Select,
 } from "@mui/material";
+import { createParamArray } from "../paramUtil";
 
-const Basic = ({ isConfirm }) => {
-  const [basicProfile, setBasicProfile] = React.useState({
+export const createBasicParameter = (basicProfile) => {
+  return {
+    gender: basicProfile?.gender ?? undefined,
+    year: basicProfile?.year ?? undefined,
+    month: basicProfile?.month ?? undefined,
+    day: basicProfile?.day ?? undefined,
+  };
+};
+
+const Basic = ({
+  isConfirm,
+  data = {
     gender: null,
     year: null,
     month: null,
     day: null,
-  });
-  const { search } = useLocation();
+  },
+}) => {
+  const [basicProfile, setBasicProfile] = React.useState(data);
 
-  const query = React.useMemo(() => new URLSearchParams(search), [search]);
-  // 先ほど指定したパラメータ名(ここでは"hoge")を指定
+  const paramArray = React.useMemo(() => {
+    return createParamArray(createBasicParameter(basicProfile));
+  }, [basicProfile]);
 
-  const hoge = query.get("hoge");
   return (
     <>
       {!isConfirm ? (
@@ -158,7 +170,11 @@ const Basic = ({ isConfirm }) => {
           </div>
           {!isConfirm ? (
             <div style={{ textAlign: "center" }}>
-              <Link to="/Questionnaire">
+              <Link
+                to={{
+                  pathname: `/Questionnaire?${paramArray.join("&")}`,
+                }}
+              >
                 <Button variant="contained" size="medium">
                   次へ
                 </Button>
