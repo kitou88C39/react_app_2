@@ -2,18 +2,20 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { Button, Grid, TextField, Tooltip } from "@mui/material";
-const { search } = useLocation();
-const query = React.useMemo(() => new URLSearchParams(search), [search]);
-// 先ほど指定したパラメータ名(ここでは"hoge")を指定
-const hoge = query.get("hoge");
 
 const Optional = ({ isConfirm }) => {
   const [optionalRequest, setOptionalRequest] = React.useState({
     request: null,
   });
+  const { search } = useLocation();
+  const query = React.useMemo(() => new URLSearchParams(search), [search]);
+  // 先ほど指定したパラメータ名(ここでは"hoge")を指定
+
+  const hoge = query.get("hoge");
   return (
     <>
       {!isConfirm ? <p style={{ textAlign: "center" }}>ご相談下さい</p> : null}
+
       <motion.div
         initial={{ scaleY: 0 }}
         animate={{ scaleY: 1 }}

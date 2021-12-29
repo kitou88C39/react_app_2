@@ -11,10 +11,6 @@ import {
   RadioGroup,
   Typography,
 } from "@mui/material";
-const { search } = useLocation();
-const query = React.useMemo(() => new URLSearchParams(search), [search]);
-// 先ほど指定したパラメータ名(ここでは"hoge")を指定
-const hoge = query.get("hoge");
 
 export const QUESTIONS = [
   "現在、生命保険に加入されていますか？",
@@ -26,6 +22,11 @@ const Questionnaire = ({ isConfirm }) => {
   const handleAnswer = (answeredIndex, answer) => {
     setAnswers(answers.map((e, i) => (i === answeredIndex ? answer : e)));
   };
+  const { search } = useLocation();
+  const query = React.useMemo(() => new URLSearchParams(search), [search]);
+  // 先ほど指定したパラメータ名(ここでは"hoge")を指定
+
+  const hoge = query.get("hoge");
   const [answers, setAnswers] = React.useState(
     Array(QUESTIONS.length).fill(null)
   );
@@ -34,7 +35,7 @@ const Questionnaire = ({ isConfirm }) => {
       {!isConfirm ? (
         <p style={{ textAlign: "center" }}>以下の質問にお答え下さい</p>
       ) : null}
-      {/* <Optional /> */}
+
       <motion.div
         initial={{ scaleY: 0 }}
         animate={{ scaleY: 1 }}

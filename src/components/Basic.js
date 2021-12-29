@@ -12,11 +12,6 @@ import {
   Select,
 } from "@mui/material";
 
-const { search } = useLocation();
-
-const query = React.useMemo(() => new URLSearchParams(search), [search]);
-// 先ほど指定したパラメータ名(ここでは"hoge")を指定
-const hoge = query.get("hoge");
 const Basic = ({ isConfirm }) => {
   const [basicProfile, setBasicProfile] = React.useState({
     gender: null,
@@ -24,6 +19,12 @@ const Basic = ({ isConfirm }) => {
     month: null,
     day: null,
   });
+  const { search } = useLocation();
+
+  const query = React.useMemo(() => new URLSearchParams(search), [search]);
+  // 先ほど指定したパラメータ名(ここでは"hoge")を指定
+
+  const hoge = query.get("hoge");
   return (
     <>
       {!isConfirm ? (

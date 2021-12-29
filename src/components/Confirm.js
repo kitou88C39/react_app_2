@@ -1,14 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import Basic from "./Basic";
-import Questionnaire from "./Questionnaire";
-import Optional from "./Optional";
+// import Basic from "./Basic";
+// import Questionnaire from "./Questionnaire";
+// import Optional from "./Optional";
 import { Button } from "@mui/material";
 
 export const UserInputData = React.createContext();
 
-function Confirm({ basicProps, questionnaireProps, optionalProps }) {
+function Confirm() {
   return (
     <motion.div
       initial={{ scaleY: 0 }}
@@ -18,15 +18,10 @@ function Confirm({ basicProps, questionnaireProps, optionalProps }) {
     >
       <div>
         <p style={{ textAlign: "center" }}>以下の内容をご確認下さい</p>
-
         <div style={{ textAlign: "center" }}>
           <Link to={{ pathname: "/Basic?hoge=aaa" }}></Link>
           <Link to={{ pathname: "/Questionnaire?hoge=aaa" }}></Link>
           <Link to={{ pathname: "/Optional?hoge=aaa" }}></Link>
-
-          {/* <Basic isConfirm {...basicProps} />
-          <Questionnaire isConfirm {...questionnaireProps} />
-          <Optional isConfirm {...optionalProps} />{" "} */}
         </div>
         <div style={{ textAlign: "center" }}>
           <Link to="/Optional">
