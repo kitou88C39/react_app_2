@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-
+// import Optional from "./Optional";
 import {
   Button,
   FormControl,
@@ -26,62 +26,69 @@ const Questionnaire = ({ isConfirm }) => {
     Array(QUESTIONS.length).fill(null)
   );
   return (
-    <motion.div
-      initial={{ scaleY: 0 }}
-      animate={{ scaleY: 1 }}
-      exit={{ scaleY: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      <div style={{ textAlign: "center" }}>
+    <>
+      {!isConfirm ? (
         <p style={{ textAlign: "center" }}>以下の質問にお答え下さい</p>
-        <FormControl component="fieldset">
-          {answers
-            .filter((_, i) => i === 0 || answers[i - 1])
-            .map((answer, i) => (
-              <React.Fragment key={i}>
-                <FormLabel component="legend">{QUESTIONS[i]}</FormLabel>
-                {isConfirm ? (
-                  <Typography>
-                    {answer === "yes" ? "はい" : "いいえ"}
-                  </Typography>
-                ) : (
-                  <RadioGroup
-                    row
-                    aria-label="gender"
-                    name="row-radio-buttons-group"
-                    onChange={(_evt, value) => {
-                      handleAnswer(i, value);
-                    }}
-                  >
-                    <FormControlLabel
-                      value="yes"
-                      control={<Radio />}
-                      label="はい"
-                    />
-                    <FormControlLabel
-                      value="no"
-                      control={<Radio />}
-                      label="いいえ"
-                    />
-                  </RadioGroup>
-                )}
-              </React.Fragment>
-            ))}
-        </FormControl>
-      </div>
-      <div style={{ textAlign: "center" }}>
-        <Link to="/">
-          <Button variant="outlined" size="medium">
-            戻る
-          </Button>
-        </Link>
-        <Link to="/Optional">
-          <Button variant="contained" size="medium">
-            次へ
-          </Button>
-        </Link>
-      </div>
-    </motion.div>
+      ) : null}
+      {/* <Optional /> */}
+      <motion.div
+        initial={{ scaleY: 0 }}
+        animate={{ scaleY: 1 }}
+        exit={{ scaleY: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div style={{ textAlign: "center" }}>
+          <FormControl component="fieldset">
+            {answers
+              .filter((_, i) => i === 0 || answers[i - 1])
+              .map((answer, i) => (
+                <React.Fragment key={i}>
+                  <FormLabel component="legend">{QUESTIONS[i]}</FormLabel>
+                  {isConfirm ? (
+                    <Typography>
+                      {answer === "yes" ? "はい" : "いいえ"}
+                    </Typography>
+                  ) : (
+                    <RadioGroup
+                      row
+                      aria-label="gender"
+                      name="row-radio-buttons-group"
+                      onChange={(_evt, value) => {
+                        handleAnswer(i, value);
+                      }}
+                    >
+                      <FormControlLabel
+                        value="yes"
+                        control={<Radio />}
+                        label="はい"
+                      />
+                      <FormControlLabel
+                        value="no"
+                        control={<Radio />}
+                        label="いいえ"
+                      />
+                    </RadioGroup>
+                  )}
+                </React.Fragment>
+              ))}
+          </FormControl>
+        </div>
+        {!isConfirm ? (
+          <div style={{ textAlign: "center" }}>
+            <Link to="/">
+              <Button variant="outlined" size="medium">
+                戻る
+              </Button>
+            </Link>
+            <Link to="/Optional">
+              <Button variant="contained" size="medium">
+                次へ
+              </Button>
+            </Link>
+          </div>
+        ) : null}
+      </motion.div>
+    </>
   );
 };
 

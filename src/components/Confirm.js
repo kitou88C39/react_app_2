@@ -18,6 +18,7 @@ function Confirm({ basicProps, questionnaireProps, optionalProps }) {
     >
       <div>
         <p style={{ textAlign: "center" }}>以下の内容をご確認下さい</p>
+
         <div style={{ textAlign: "center" }}>
           <Basic isConfirm {...basicProps} />
           <Questionnaire isConfirm {...questionnaireProps} />
@@ -39,5 +40,4 @@ function Confirm({ basicProps, questionnaireProps, optionalProps }) {
     </motion.div>
   );
 }
-
 export default Confirm;

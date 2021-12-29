@@ -11,6 +11,7 @@ import {
   RadioGroup,
   Select,
 } from "@mui/material";
+// import Questionnaire from "./Questionnaire";
 
 const Basic = ({ isConfirm }) => {
   const [basicProfile, setBasicProfile] = React.useState({
@@ -21,6 +22,10 @@ const Basic = ({ isConfirm }) => {
   });
   return (
     <>
+      {!isConfirm ? (
+        <p style={{ textAlign: "center" }}>お客様の情報を入力して下さい</p>
+      ) : null}
+      {/* <Questionnaire /> */}
       <motion.div
         initial={{ scaleY: 0 }}
         animate={{ scaleY: 1 }}
@@ -28,7 +33,6 @@ const Basic = ({ isConfirm }) => {
         transition={{ duration: 0.5 }}
       >
         <div>
-          <p style={{ textAlign: "center" }}>お客様の情報を入力して下さい</p>
           <div style={{ textAlign: "center" }}>
             <FormControl component="fieldset">
               <FormLabel component="gender">- 性別 -</FormLabel>
@@ -147,13 +151,15 @@ const Basic = ({ isConfirm }) => {
               )}
             </FormControl>
           </div>
-          <div style={{ textAlign: "center" }}>
-            <Link to="/Questionnaire">
-              <Button variant="contained" size="medium">
-                次へ
-              </Button>
-            </Link>
-          </div>
+          {!isConfirm ? (
+            <div style={{ textAlign: "center" }}>
+              <Link to="/Questionnaire">
+                <Button variant="contained" size="medium">
+                  次へ
+                </Button>
+              </Link>
+            </div>
+          ) : null}
         </div>
       </motion.div>
     </>

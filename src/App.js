@@ -14,6 +14,7 @@ const App = () => {
       <AppBar position="static" style={{ backgroundColor: "primary" }}>
         <Toolbar>React課題 ④</Toolbar>{" "}
       </AppBar>
+
       <AnimatePresence exitBeforeEnter initial={false}>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Basic />}></Route>
