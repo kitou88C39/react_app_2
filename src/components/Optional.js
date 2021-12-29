@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { Button, Grid, TextField, Tooltip } from "@mui/material";
 import { createBasicParameter } from "./Basic";
-import { createParamArray } from "./paramUtil";
+import { createParamArray } from "../paramUtil";
 
 const Optional = ({ isConfirm, data }) => {
   const [optionalRequest, setOptionalRequest] = React.useState({

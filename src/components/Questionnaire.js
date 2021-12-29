@@ -11,7 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 import { createBasicParameter } from "./Basic";
-import { createParamArray } from "./paramUtil";
+import { createParamArray } from "../paramUtil";
 
 export const QUESTIONS = [
   "現在、生命保険に加入されていますか？",
