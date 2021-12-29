@@ -20,9 +20,13 @@ function Confirm({ basicProps, questionnaireProps, optionalProps }) {
         <p style={{ textAlign: "center" }}>以下の内容をご確認下さい</p>
 
         <div style={{ textAlign: "center" }}>
-          <Basic isConfirm {...basicProps} />
+          <Link to={{ pathname: "/Basic?hoge=aaa" }}></Link>
+          <Link to={{ pathname: "/Questionnaire?hoge=aaa" }}></Link>
+          <Link to={{ pathname: "/Optional?hoge=aaa" }}></Link>
+
+          {/* <Basic isConfirm {...basicProps} />
           <Questionnaire isConfirm {...questionnaireProps} />
-          <Optional isConfirm {...optionalProps} />{" "}
+          <Optional isConfirm {...optionalProps} />{" "} */}
         </div>
         <div style={{ textAlign: "center" }}>
           <Link to="/Optional">

@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   Button,
   FormControl,
@@ -11,8 +11,12 @@ import {
   RadioGroup,
   Select,
 } from "@mui/material";
-// import Questionnaire from "./Questionnaire";
 
+const { search } = useLocation();
+
+const query = React.useMemo(() => new URLSearchParams(search), [search]);
+// 先ほど指定したパラメータ名(ここでは"hoge")を指定
+const hoge = query.get("hoge");
 const Basic = ({ isConfirm }) => {
   const [basicProfile, setBasicProfile] = React.useState({
     gender: null,
@@ -25,7 +29,7 @@ const Basic = ({ isConfirm }) => {
       {!isConfirm ? (
         <p style={{ textAlign: "center" }}>お客様の情報を入力して下さい</p>
       ) : null}
-      {/* <Questionnaire /> */}
+
       <motion.div
         initial={{ scaleY: 0 }}
         animate={{ scaleY: 1 }}

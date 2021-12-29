@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 // import Optional from "./Optional";
 import {
   Button,
@@ -11,6 +11,10 @@ import {
   RadioGroup,
   Typography,
 } from "@mui/material";
+const { search } = useLocation();
+const query = React.useMemo(() => new URLSearchParams(search), [search]);
+// 先ほど指定したパラメータ名(ここでは"hoge")を指定
+const hoge = query.get("hoge");
 
 export const QUESTIONS = [
   "現在、生命保険に加入されていますか？",
